@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+rm -f /etc/httpd/run/httpd.pid
+mkdir -p /run/php-fpm
+chown root.apache /run/php-fpm
+/sbin/php-fpm
+/usr/sbin/httpd -DFOREGROUND
