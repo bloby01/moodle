@@ -5,8 +5,9 @@ RUN mkdir /var/moodledata && chown -R apache:apache /var/moodledata && chmod 077
 ADD https://download.moodle.org/download.php/direct/stable403/moodle-4.3.3.tgz .
 RUN tar -xzf moodle-4.3.3.tgz -C /var/www/ &&  chown -R apache:apache /var/www/moodle && chmod 0550 /var/www/moodle
 COPY DBmysql /var/moodledata
-COPY config.php /var/www/moodle/ &&  chown apache:apache /var/www/moodle/config.php && chmod 0440 /var/www/moodle/config.php
+COPY config.php tar -xzf moodle-4.3.3.tgz -C /var/www/moodle &&  chown apache:apache /var/www/moodle/config.php && chmod 0440 /var/www/moodle/config.php
 RUN chown apache:apache /var/moodledata/DBmysql && chmod 0400 /var/moodledata/DBmysql
+COPY config-dist.php /var/www/moodle/config.php
 COPY httpd.sh /usr/sbin/
 RUN chmod +x /usr/sbin/httpd.sh
 ENTRYPOINT  /usr/sbin/httpd.sh
