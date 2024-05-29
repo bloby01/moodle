@@ -12,7 +12,5 @@ services:
     image: mysql
     volumes:
     - datadb:/var/lib/mysql
-    links:
-    - web
 volumes:
   datadb: {}
