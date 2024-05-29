@@ -12,7 +12,7 @@ services:
     image: mysql
     volumes:
     - datadb:/var/lib/mysql
-    environments:
+    environment:
     - MYSQL_ROOT_PASSWORD=IlEstInterditDeToucher0Ca
 volumes:
   datadb: {}
